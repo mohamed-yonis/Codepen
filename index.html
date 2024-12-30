@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODE PEN CLONE</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- fontawose -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="box">
+                <label> <i class="fa-brands fa-html5"></i>HTML</label>
+                <textarea id="html" onkeyup="update()"></textarea>
+            </div>
+            <div class="box">
+                <label> <i class="fa-brands fa-css3-alt"></i>CSS</label>
+                <textarea id="CSS" onkeyup="update()"></textarea>
+            </div>
+            <div class="box">
+                <label><i class="fa-brands fa-js"></i>JS</label>
+                <textarea id="JS"></textarea>
+            </div>
+        </div>
+        <div class="bottom">
+            <iframe id="output"></iframe>
+        </div>
+    </div>
+   
+
+<script>
+const htmlInput = document.querySelector('#html');
+const cssInput = document.querySelector('#CSS');
+const jsInput = document.querySelector('#JS');
+const output = document.querySelector('#output');
+
+function update() {
+    const html = htmlInput.value;
+    const css = cssInput.value;
+    const js = jsInput.value;
+    output.contentDocument.body.innerHTML = html + '<style>' + css + '</style>';
+    const script = output.contentDocument.createElement('script');
+    script.textContent = js;
+    output.contentDocument.body.appendChild(script);
+}
+
+htmlInput.addEventListener('input', update);
+cssInput.addEventListener('input', update);
+jsInput.addEventListener('input', update);
+
+// Initial update
+update();
+</script>
+
+</body>
+
+</html>
